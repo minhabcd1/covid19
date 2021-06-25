@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/user.js"></script>
+<title>document</title>
+</head>
+<body>
+	<form action="/search" method="post">
+		<input type="search" placeholder="Enter country name" name="name"
+			th:value="${name}"></input>
+		<button type="submit">search</button>
+	</form>
+
+	<form action="/" method="post">
+		<table>
+			<tr>
+				<td>
+					<div th:text="${name} ? ${name} + ' record' : 'Global record '">
+					</div>
+				</td>
+				<td><select name="date" th:value="${date}">
+						<option value="25">Choose Date</option>
+						<option value="24">2021-06-24</option>
+						<option value="23">2021-06-23</option>
+						<option value="22">2021-06-22</option>
+						<option value="21">2021-06-21</option>
+						<option value="20">2021-06-20</option>
+						<option value="19">2021-06-19</option>
+						<option value="18">2021-06-18</option>
+				</select></td>
+				<td>
+					<button type="submit">submit</button>
+				</td>
+			</tr>
+		</table>
+
+		<table border="1">
+			<tr>
+				<th>confirmed</th>
+				<th>recovered</th>
+				<th>deaths</th>
+				<th>mortality rate</th>
+			</tr>
+
+			<tr th:each="country : ${country}">
+				<td th:text="${country.confirmed}"></td>
+				<td th:text="${country.recovered}"></td>
+				<td th:text="${country.deaths}"></td>
+				<td th:text="${mortalityRate}"></td>
+			</tr>
+
+			<tr th:style="${confirm} ? 'display:contents' : 'display:none'">
+				<td th:text="${confirm}"></td>
+				<td th:text="${recovered}"></td>
+				<td th:text="${deaths}"></td>
+				<td th:text="${mortalityRateDate}"></td>
+			</tr>
+		</table>
+	</form>
+	<div>
+		information about Covid-19 in <a th:href="@{'/Vietnam'}">Vietnam</a>
+	</div>
+	<div>
+		Vaccines Data in <a th:href="@{'/Vaccine'}">Vietnam</a>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/user.js"></script>
+<title>document</title>
+</head>
+<body>
+
+	<div>Vietnam record</div>
+	<table border="1">
+		<tr>
+			<th>confirmed</th>
+			<th>recovered</th>
+			<th>deaths</th>
+			<th>mortality rate</th>
+		</tr>
+		<tr th:each="country : ${country}">
+			<td th:text="${country.confirmed}"></td>
+			<td th:text="${country.recovered}"></td>
+			<td th:text="${country.deaths}"></td>
+			<td th:text="${mortalityRate}"></td>
+		</tr>
+	</table>
+	<div>
+		information about Covid-19 all around the world <a th:href="@{'/'}">Global</a>
+	</div>
+	<div>
+		Vaccines Data in <a th:href="@{'/Vaccine'}">Vietnam</a>
+	</div>
+</body>
+
+</html>
